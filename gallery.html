@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="img/miodayo.jpg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+	<title>Nazonohito Official Site - Gallery</title>
+</head>
+
+<body>
+	<header class="title">
+		<h1>Gallery of Nazonohito</h1>
+	</header>
+
+	<nav class="modern-nav">
+		<div class="menu-toggle" id="mobile-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+	
+		<ul class="nav-list">
+			<li><a href="index.html" class="nav-item">Home</a></li>
+			<li><a href="profile.html" class="nav-item">Profile</a></li>
+			<li><a href="gallery.html" class="nav-item">Gallery</a></li>
+			<li><a href="contact.html" class="nav-item">Contact</a></li>
+		</ul>
+	</nav>
+	<main class="glass-card gallery-container">
+		<h2>Our Creations</h2>
+	
+		<div class="slideshow-container">
+			<div class="slide-image"></div>
+	
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+	
+		<div style="text-align:center; margin-top: 20px;">
+		</div>
+	</main>
+
+	<footer class="modern-footer">
+		<p>&copy; 2026 Nazonohito. Built with passion feat.Gemini.</p>
+		<a class="pakutaso" href="https://www.pakutaso.com" title="フリー素材「ぱくたそ」">Special Thanks to フリー素材「ぱくたそ」 Model by 高尾実生 </a>
+	</footer>
+	<script>
+		// 【ここからJavaScript】
+		// 令和のスタンダード：画像リストをJavaScriptで管理
+		const images = [
+			'img/mikomikoDSC_1552_TP_V4.jpg', // miodayo.jpg, nazonohito.gif 以外の3枚の画像パス
+			'img/takaoDSC_0511_TP_V4.jpg',
+			'img/ukyoDSC_0669_TP_V4.jpg'
+			// 例: 'img/sunset.jpg', 'img/mountain.jpg', 'img/cityscape.jpg' など
+		];
+
+		let slideIndex = 0; // 現在表示中のスライドの番号 (0から始まる)
+		let slideInterval; // 自動再生用のインターバル
+
+		// スライドショーの表示を更新する関数
+		function showSlides(n) {
+			const slideImageDiv = document.querySelector('.slide-image');
+			const dotContainer = document.querySelector('div[style="text-align:center; margin-top: 20px;"]');
+
+			// 範囲外の番号を調整 (最後のスライドの次なら最初へ、最初のスライドの前なら最後へ)
+			if (n >= images.length) { slideIndex = 0; }
+			if (n < 0) { slideIndex = images.length - 1; }
+
+			// 画像の表示
+			slideImageDiv.style.backgroundImage = `url('${images[slideIndex]}')`;
+			// アニメーション (CSSで設定)
+			slideImageDiv.classList.add('fade-in');
+			setTimeout(() => {
+				slideImageDiv.classList.remove('fade-in');
+			}, 500); // アニメーション時間と合わせる
+
+			// ドットの表示を更新
+			dotContainer.innerHTML = ''; // 一度すべてのドットをクリア
+			for (let i = 0; i < images.length; i++) {
+				const dot = document.createElement('span');
+				dot.classList.add('dot');
+				if (i === slideIndex) {
+					dot.classList.add('active'); // 現在のスライドのドットをアクティブに
+				}
+				dot.onclick = () => currentSlide(i); // ドットをクリックでそのスライドへ
+				dotContainer.appendChild(dot);
+			}
+
+			// 自動再生のリセット
+			resetAutoPlay();
+		}
+
+		// 左右の矢印ボタンでスライドを切り替える関数
+		function plusSlides(n) {
+			showSlides(slideIndex += n);
+		}
+
+		// ドットをクリックして直接スライドを選ぶ関数
+		function currentSlide(n) {
+			showSlides(slideIndex = n);
+		}
+
+		// 自動再生をリセットする関数
+		function resetAutoPlay() {
+			clearInterval(slideInterval); // 今までの自動再生を停止
+			slideInterval = setInterval(() => {
+				plusSlides(1); // 5秒ごとに次のスライドへ
+			}, 5000); // 【令和のスタンダード：自動再生の間隔】
+		}
+
+		// ページが読み込まれたら最初のスライドを表示して自動再生を開始
+		document.addEventListener('DOMContentLoaded', () => {
+			showSlides(slideIndex);
+		});
+		// 【ここまでJavaScript】
+	</script>
+		
+</body>
+
+</html>

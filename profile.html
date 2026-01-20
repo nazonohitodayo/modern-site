@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="img/miodayo.jpg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+	<title>Nazonohito Official Site - Profile</title>
+</head>
+
+<body>
+	<header class="title">
+		<h1>About Nazonohito</h1>
+	</header>
+
+	<nav class="modern-nav">
+		<div class="menu-toggle" id="mobile-menu">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+	
+		<ul class="nav-list">
+			<li><a href="index.html" class="nav-item">Home</a></li>
+			<li><a href="profile.html" class="nav-item">Profile</a></li>
+			<li><a href="gallery.html" class="nav-item">Gallery</a></li>
+			<li><a href="contact.html" class="nav-item">Contact</a></li>
+		</ul>
+	</nav>
+
+	<main class="glass-card profile-container">
+		<div class="profile-header">
+			<img src="img/gemini-collab.jpg" alt="Profile Avatar" class="avatar">
+			<h2>Nazonohito</h2>
+			<p class="tagline">Digital Creator / Dreamer</p>
+		</div>
+
+		<div class="profile-content">
+			<section class="bio">
+				<h3>Biography</h3>
+				<p>2026年、インターネットの深淵から現れたデジタルクリエイター。レトロなWeb文化を愛しつつ、最新のグラフィックとコードを融合させる旅を続けています。Geminiと共に新しいWebの形を模索中。</p>
+			</section>
+
+			<section class="skills">
+				<h3>Skills🔰</h3>
+				<div class="skill-tags">
+					<span>HTML5</span>
+					<span>CSS3</span>
+					<span>JavaScript</span>
+					<span>Generative AI</span>
+					<span>Retro Soul</span>
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<footer class="modern-footer">
+		<p>&copy; 2026 Nazonohito. Built with passion feat.Gemini.</p>
+	</footer>
+
+	<script>
+		document.addEventListener('mousemove', (e) => {
+			const ripple = document.createElement('div');
+			ripple.className = 'ripple';
+			document.body.appendChild(ripple);
+			ripple.style.left = e.clientX + 'px';
+			ripple.style.top = e.clientY + 'px';
+			setTimeout(() => { ripple.remove(); }, 800);
+		});
+	</script>
+</body>
+
+</html>
